@@ -1,0 +1,5 @@
+run ../inputs/random-x256-y256-z3-n256.txt
+run ../inputs/random-x256-y256-z3-n256.txt
+run ../inputs/random-x256-y256-z3-n256.txt
+exit
+

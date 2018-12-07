@@ -1,0 +1,4 @@
+run ../inputs/random-x128-y128-z3-n128.txt
+run ../inputs/random-x32-y32-z3-n64.txt
+run ../inputs/random-x128-y128-z3-n128.txt
+leave
