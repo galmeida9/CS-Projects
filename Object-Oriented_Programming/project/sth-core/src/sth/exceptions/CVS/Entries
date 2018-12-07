@@ -1,0 +1,20 @@
+/BadEntryException.java/1.1/Sun Oct  7 10:12:12 2018//
+/ImportFileException.java/1.2/Sat Nov  3 18:37:41 2018//
+/InvalidCourseSelectionException.java/1.1/Tue Nov  6 21:14:26 2018//
+/NoSuchPersonIdException.java/1.1/Sun Oct  7 10:12:12 2018//
+/DisciplineFullOnStudentsException.java/1.1/Tue Nov 13 16:02:45 2018//
+/FileNotSavedException.java/1.2/Thu Nov 15 20:19:18 2018//
+/InvalidDisciplineSelectionException.java/1.3/Thu Nov 15 20:20:12 2018//
+/ProjectAlreadyExistsException.java/1.2/Thu Nov 15 20:22:37 2018//
+/ProjectDoesntExistException.java/1.2/Thu Nov 15 20:24:05 2018//
+/RepresentativeFullException.java/1.2/Thu Nov 15 20:25:43 2018//
+/AlreadySubmitedSurveyException.java/1.1/Wed Nov 28 23:20:23 2018//
+/CloseSurveyException.java/1.1/Wed Nov 28 23:47:11 2018//
+/FinishSurveyException.java/1.1/Wed Nov 28 23:47:03 2018//
+/NotEmptySurveyException.java/1.1/Wed Nov 28 22:37:13 2018//
+/OpenSurveyException.java/1.1/Wed Nov 28 23:21:28 2018//
+/SurveyDoesntExistException.java/1.1/Wed Nov 28 22:45:48 2018//
+/SurveyFinishException.java/1.1/Wed Nov 28 22:38:43 2018//
+/ProjectNotOpenException.java/1.1/Fri Nov 30 19:15:52 2018//
+/OperationUnsupportedException.java/1.1/Thu Dec  6 18:22:09 2018//
+D

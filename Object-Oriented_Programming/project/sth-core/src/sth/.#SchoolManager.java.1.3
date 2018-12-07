@@ -1,0 +1,92 @@
+package sth;
+
+import java.io.IOException;
+import sth.exceptions.BadEntryException;
+import sth.exceptions.ImportFileException;
+import sth.exceptions.NoSuchPersonIdException;
+
+//FIXME import other classes if needed
+
+/**
+ * The façade class.
+ */
+public class SchoolManager {
+
+  //FIXME add object attributes if needed
+	private School _school = new School();	
+	private Person _personLogged;
+	
+  //FIXME implement constructors if needed
+  
+  /**
+   * @param datafile
+   * @throws ImportFileException
+   * @throws InvalidCourseSelectionException
+   */
+  public void importFile(String datafile) throws ImportFileException {
+    try {
+      _school.importFile(datafile);
+    } catch (IOException | BadEntryException e) {
+      throw new ImportFileException(e);
+    }
+  }
+
+  /**
+   * @param id
+   * @throws NoSuchPersonIdException
+   */
+  public void login(int id) throws NoSuchPersonIdException {
+    //FIXME implement method
+	_personLogged =	_school.searchPerson(id);
+  }
+
+  /**
+   * @return true when the currently logged in person is an administrative
+   */
+  public boolean hasAdministrative() {
+    //FIXME implement predicate
+	String identifier = _personLogged.showPerson().split("\\|")[0];
+    return identifier.equals("FUNCIONÁRIO");
+  }
+
+  /**
+   * @return true when the currently logged in person is a professor
+   */
+  public boolean hasProfessor() {
+    //FIXME implement predicate
+	String identifier = _personLogged.showPerson().split("\\|")[0];
+    return identifier.equals("DOCENTE");
+  }
+
+  /**
+   * @return true when the currently logged in person is a student
+   */
+  public boolean hasStudent() {
+    //FIXME implement predicate
+	String identifier = _personLogged.showPerson().split("\\|")[0];
+    return identifier.equals("ALUNO") || identifier.equals("DELEGADO");
+  }
+
+  /**
+   * @return true when the currently logged in person is a representative
+   */
+  public boolean hasRepresentative() {
+    //FIXME implement predicate
+	String identifier = _personLogged.showPerson().split("\\|")[0];
+    return identifier.equals("DELEGADO");
+  }
+
+  public String showPerson(){
+	  return _personLogged.showPerson();
+  }
+
+  //FIXME implement other methods (in general, one for each command in sth-app)
+  public String[] showAllPerson(){
+	return _school.showAllPerson();
+  }
+	
+	public void changePhoneNumber(String number) {
+	  _personLogged.changeTelephone(number);
+	}
+
+}

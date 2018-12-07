@@ -1,0 +1,229 @@
+package sth;
+
+//FIXME import other classes if needed
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import sth.exceptions.BadEntryException;
+import sth.exceptions.InvalidCourseSelectionException;
+import sth.exceptions.InvalidDisciplineSelectionException;
+import sth.exceptions.ProjectAlreadyExistsException;
+import sth.exceptions.NoSuchPersonIdException;
+import sth.exceptions.ProjectDoesntExistException;
+import sth.exceptions.DisciplineFullOnStudentsException;
+import sth.exceptions.RepresentativeFullException;
+import java.io.Serializable;
+import java.util.Map;
+import java.util.TreeMap;
+import java.util.List;
+import java.util.LinkedList;
+import java.text.Collator;
+import java.util.Locale;
+import java.util.Collections;
+
+/**
+ * School implementation.
+ */
+class School implements Serializable {
+
+  /** Serial number for serialization. */
+  private static final long serialVersionUID = 201810051538L;
+
+  private final static int INITIAL_ID = 100000;
+  private Map<Integer, Person> _people = new TreeMap<Integer, Person>();
+  private List<Course> _courses = new LinkedList<Course>();
+  private int _id = INITIAL_ID;
+  private Observer observer = new Observer();
+  
+  /**
+   * @param filename
+   * @throws BadEntryException
+   * @throws IOException
+   */
+	void importFile(String filename) throws IOException, BadEntryException, DisciplineFullOnStudentsException {
+		/**
+		* Imports database from a file.
+		*/
+		BufferedReader reader = new BufferedReader(new FileReader(filename));
+		String line;
+		int current_id = 0, id;
+		String current_type="";
+		boolean rep=false;
+		while ((line = reader.readLine()) != null){
+			String[] fields = line.split("\\|");
+			String first = fields[0];
+			if (first.startsWith("#")){
+			String strCourse = first.split(" ")[1];
+				Course course = new Course(strCourse);
+				if (_courses.contains(course)) course = this.getCourse(strCourse);
+				else _courses.add(course);
+				Discipline discipline = new Discipline(fields[1], course);
+				if (course.containsDiscipline(discipline.getName())) discipline = course.getDiscipline(fields[1]);
+				else course.addDiscipline(discipline);
+				if ( current_id != 0){
+					Person person = _people.get(current_id);
+					if (current_type.equals("Student")){
+						Student s = (Student) person;
+						s.setCourse(course);
+						s.addDiscipline(discipline);
+						course.addStudent(s);
+						discipline.addStudent(s);
+					}else if (current_type.equals("Professor")){
+						Professor p = (Professor) person;
+						p.addCourse(course);
+						p.addDiscipline(discipline);
+						discipline.addProfessor(p);
+					}
+				}
+	
+			}
+			else if (first.equals("ALUNO")||first.equals("DELEGADO")){
+				if (first.equals("DELEGADO")) rep=true;
+				id = Integer.parseInt(fields[1]); 
+				Student student = new Student(fields[3], fields[2], id, rep);
+				_people.put(id, student);
+				current_id = id;
+				if (current_id > _id) _id = current_id + 1;				
+				current_type = "Student";
+				rep=false;
+			}
+			else if (first.equals("DOCENTE")){
+				id = Integer.parseInt(fields[1]); 
+				Professor professor = new Professor(fields[3], fields[2], id);
+				_people.put(id, professor);
+				current_id = id;
+				if (current_id > _id) _id = current_id + 1;				
+				current_type = "Professor";
+	
+			}
+			else if (first.equals("FUNCIONÁRIO")){
+				id = Integer.parseInt(fields[1]); 
+				Administrative administrative = new Administrative(fields[3], fields[2], id);
+				_people.put(id, administrative);
+				current_id = id;
+				if (current_id > _id) _id = current_id + 1;							
+				current_type = "Funcionário";
+			}
+		}	
+	}
+  
+  public Person searchPerson(int id) throws NoSuchPersonIdException {
+	/**
+	* Search a person in the School by id and returns the person.
+	*/
+	if (!_people.containsKey(id)) throw new NoSuchPersonIdException(id);
+	return _people.get(id);
+  }
+
+  public String[] showPersonByName(String name){
+	/**
+	* Search a person in the School by part of his/her name and returns a String array with it.
+	*/
+	  Map<String, String> map = new TreeMap<String, String>(Collator.getInstance(Locale.getDefault()));
+	  for (Person p: _people.values()){
+		  if (p.nameContains(name)) map.put(p.requestPersonName(),p.showPerson());
+	  }
+	  List<String> lst = new LinkedList();
+	  lst.addAll(map.values());
+	  return lst.toArray(new String[lst.size()]);
+  }
+
+  public String[] showAllPerson(){
+	/**
+	* returns a String array with all the people in the school.
+	*/
+	List<String> lst = new LinkedList<String>();
+	for (Person p: _people.values())
+	 	lst.add(p.showPerson());
+	return lst.toArray(new String[lst.size()]);	  
+  }
+
+  private Course getCourse(String name){
+	/**
+	* Search a course by name in the school and if it exists it returns it.
+	*/
+	  for (int i=0; i<_courses.size(); i++){
+		  Course course = _courses.get(i);
+		  if (name.equals(course.getName())) return course;
+	  }
+	  return null;
+  }
+	
+	public String[] showDisciplineStudents(String name, Professor p) throws InvalidDisciplineSelectionException{
+		/**
+		* Returns a String array with all the students from a given discipline from a specific professor.
+		*/
+		for (int i=0; i < _courses.size(); i++) {
+				Course course = _courses.get(i);
+				if (course.containsDiscipline(name)) {
+						Discipline discipline = course.getDiscipline(name); 
+						if (discipline.containsProfessor(p)){
+							String[] lst = discipline.showDisciplineStudents();
+							return lst;
+						}
+				}
+		}
+		throw new InvalidDisciplineSelectionException(name);
+	}
+
+	public void createProject(String disciplineName, String projectName, Professor p) throws InvalidDisciplineSelectionException, ProjectAlreadyExistsException {	
+		/**
+		* Creates a project with a given name on a discipline.
+		*/
+		for (int i=0; i < _courses.size(); i++) {
+			Course course = _courses.get(i);
+			if (course.containsDiscipline(disciplineName)) {
+					Discipline discipline = course.getDiscipline(disciplineName);
+					Project project = new Project(projectName, discipline);
+					if (discipline.containsProfessor(p)) {
+						if(discipline.containsProject(projectName)) 
+							throw new ProjectAlreadyExistsException(disciplineName, projectName);
+						else{
+							discipline.addProject(projectName, project);
+							return;
+						}
+					}
+			}
+		}
+		throw new InvalidDisciplineSelectionException(disciplineName);
+	}
+
+
+	public void closeProject(String disciplineName, String projectName, Professor p) throws InvalidDisciplineSelectionException, ProjectDoesntExistException{
+		/**
+		* Closes a project from a certain discipline.
+		*/
+		for(int i = 0; i < _courses.size(); i++) {
+			Course course = _courses.get(i);
+			if (course.containsDiscipline(disciplineName)){
+				Discipline discipline = course.getDiscipline(disciplineName);
+				if (discipline.containsProfessor(p)) {
+					if (discipline.containsProject(projectName)){
+							Project project = discipline.getProject(projectName);
+							project.close();
+							return;
+					}
+					else throw new ProjectDoesntExistException(disciplineName, projectName);
+				}
+			}
+		}
+		throw new InvalidDisciplineSelectionException(disciplineName);
+	}
+
+
+	public void makeRepresentative(Student student) throws RepresentativeFullException {
+		/**
+		* Makes a student representative if possible.
+		*/
+		Course course = student.getCourse();
+		if (course.isRepFull()) throw new RepresentativeFullException(course.getName());
+		course.addRepresentative(student);
+		student.makeRepresentative();	
+	}
+
+
+
+
+
+}
