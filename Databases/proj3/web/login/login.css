@@ -1,0 +1,56 @@
+/* Full-width inputs */
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+#login {
+    width: 70%;
+    margin-left: 15%;
+    margin-top: 40pt;
+}
+  
+/* Set a style for all buttons */
+button {
+    background-color: #6eadff;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+  
+/* Add a hover effect for buttons */
+button:hover {
+    opacity: 0.8;
+}
+  
+/* Center the avatar image inside this container */
+.imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+}
+  
+/* Avatar image */
+img.logo {
+    width: 20%;
+}
+  
+/* Add padding to containers */
+.container {
+    padding: 16px;
+}
+
+label {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.error {
+    color: red;
+    font-family: Arial, Helvetica, sans-serif;
+}

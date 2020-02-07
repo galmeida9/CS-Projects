@@ -1,0 +1,54 @@
+.sidebar {
+    top: 0;
+    position: absolute;
+    height: 4.01cm;
+    width: 0;
+    background-image: url("../resources/menu_back.png");
+    background-repeat: no-repeat;
+    background-size: 275px;
+    /*background-color: #1162a4;*/
+    overflow-x: hidden;
+    transition: 0.4s;
+    margin-top: 2.11cm;
+    margin-left: 30pt;
+    border-radius: 12.75pt;
+    overflow: hidden;
+}
+
+.sidebar img {
+    padding: 6pt 6pt 6pt 24pt;
+    text-decoration: none;
+    display: block;
+    margin-right: 13.5pt;
+    width: 7.5pt;
+}
+
+.sidebar .closebtn {
+    position: absolute;
+    top: 0;
+    right: 18.75pt;
+    font-size: 27pt;
+    margin-left: 37.5pt;
+}
+
+.sidebar a:hover {
+  color: #cccccc;
+}
+
+.row::after{
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.column {
+    float: left;
+    width: 30pt;
+    padding: 3.75pt;
+    margin-top: 7.5pt;
+}
+
+.column p{
+    font-size: 7.5pt;
+    color: black;
+}

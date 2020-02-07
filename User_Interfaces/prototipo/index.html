@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>iGo</title>
+<link rel="stylesheet" type="text/css" href="css/sidebar.css">
+<link rel="stylesheet" type="text/css" href="css/buttons.css">
+<link rel="stylesheet" type="text/css" href="css/news.css">
+<link rel="stylesheet" type="text/css" href="css/popup.css">
+<link rel="stylesheet" type="text/css" href="css/topbar.css">
+<link rel="stylesheet" type="text/css" href="css/body.css">
+<link rel="stylesheet" type="text/css" href="css/post.css">
+<link rel="stylesheet" type="text/css" href="css/chat.css">
+<link rel="stylesheet" type="text/css" href="css/settings.css">
+
+<style></style>
+
+</head>
+
+<body>
+    <h1><center>iGo protótipo</center></h1>
+    <div class="container" align="center">
+        <div id="iGo" class="watch">
+            <img class="frame" src="resources/frame.png">
+            
+            <!--MAIN SCREEN----------------------------------------------------------------->
+            <div class="mainscreen">
+               	<p class="hour" style="font-size: 48.75pt; font-weight: bold; color: #fff; text-shadow: 0pt 0pt 6pt #000; margin-top: 0%"></p>	 
+		 	    <p class="minute" style="font-size: 48.75pt; font-weight: bold; color: white; text-shadow: 0pt 0pt 6pt #000; margin-top: -55.5%;"></p>	
+                <b><p id="Date"></p></b>
+            </div>
+            <!------------------------------------------------------------------------------>
+
+
+            <!--SCROLL WRAPPER-------------------------------------------------------------->
+            <div id="scrollable"  class="scrollable darkmodeBackground">
+
+                <!--TOPBAR------------------------------------------------------------------>
+                <div class="topbar">
+                    <p><span class="hour"></span>:<span class="minute"></span></p>
+                    <p class = "battery">50%</p>
+                    <img>
+                </div>
+                <!-------------------------------------------------------------------------->
+                
+
+
+                <!--NEWS SCREEN------------------------------------------------------------->
+                <div  class="newsscreen">
+
+                    <!--NEWS TITLES--------------------------------------------------------->
+                    <div class="news darkmodeText">
+                        <h4 style="height: 0%; padding: 5%; margin-top: 0%; margin-bottom: 16%; text-shadow: 0px 0px 1px white;">NEWS    <button class="btn" id="filter" style="width: 20%; margin-left: 17pt; height: 20px"><img src="resources/filter.png" style="width: 12px; margin-left: -5px"/></button></h4>
+                        <p style="margin-top: 0.5cm"><button class="btn" onclick="openWeather()"><img src="resources/sunny.png" style="width: 0.3cm; vertical-align: middle; margin-top: -0.09cm;">  <span class="weatherToday" style="font-size: 8pt"></span></a></button>
+                        <hr style="margin-top: -8%; margin-bottom: 0%">
+                        <div id="local">
+                            <button class="btn newsTitle" type="button" onclick="showNews('mocambique')">501 mortos em Moçambique</button>
+                            <button class="btn newsTitle" type="button" onclick="showNews('lanche')">Lanches das crianças do pré-escolar vão ter fruta e legumes</button>
+                        </div>
+                        <div id="sport">
+                            <button class="btn newsTitle" type="button" onclick="showNews('futebol')">"Felizmente a Federação Portuguesa de Futebol teve o bom-senso que a RTP não teve"</button> 
+                        </div>
+                        <div id="politics">
+                            <button class="btn newsTitle" type="button" onclick="showNews('brexit')">Brexit: o que os 400 mil portugueses têm de fazer para permanecer no Reino Unido?</button> 
+                        </div>
+                        <div id="science">
+                            <button class="btn newsTitle" type="button" onclick="showNews('bebe')">Como se mantém vivo um bebé na barriga de uma mulher em morte cerebral</button> 
+                        </div>
+                        <br>
+                    </div>
+
+                    <!--NEWS STORIES-------------------------------------------------------->
+                    <div id="newsStory" class="newsStory">
+                        <h5 id="title" class="newsPart darkmodeText"></h5>
+                        <p id="text" class="newsPart darkmodeText"></p>
+                        <span><img id="shareNews" src="resources/post.png" onclick="showPopupShare('', 2);" style="width: 0.7cm"><img id="shareNews" src="resources/msg.png" onclick="sendNews()" style="width: 0.7cm; margin-left: 28pt;"></span>
+                    </div>
+
+                    <!--WEATHER SCREEN------------------------------------------------------>
+                    <div class="weatherScreen">
+                        <h4 id="weatherTitle">Lisbon, Today</h4>
+                        <img src="resources/sunny.png" style="width: 1cm; margin-top: -16%;">
+                        <p class="weatherToday darkmodeText" style="text-align: center; margin-top: -2%;">
+                        <table style="width: 100%">
+                            <tr>
+                                <th><p id="day2" class="day darkmodeText" style="margin-top: -20%"></p></th>
+                                <th><p id="day3" class="day darkmodeText" style="margin-top: -20%"></p></th>
+                            </tr>
+                            <tr>
+                                <th><img id="weatherImg2" style="width: 0.5cm;"></th>
+                                <th><img id="weatherImg3" style="width: 0.5cm;"></th>
+                            </tr>
+                            <tr>
+                                <th><p id="weatherDay2" class="weather darkmodeText"></p></th>
+                                <th><p id="weatherDay3" class="weather darkmodeText"></p></th>
+                            </tr>
+                            <tr>
+                                <th><p id="day4" class="day darkmodeText"></p></th>
+                                <th><p id="day5" class="day darkmodeText"></p></th>
+                            </tr>
+                            <tr>
+                                <th><img id="weatherImg4" style="width: 0.5cm;"></th>
+                                <th><img id="weatherImg5" style="width: 0.5cm;"></th>
+                            </tr>
+                            <tr>
+                                <th><p id="weatherDay4" class="weather darkmodeText"></p></th>
+                                <th><p id="weatherDay5" class="weather darkmodeText"></p></th>
+                            </tr>
+                            <tr>
+                                <th><p id="day6" class="day darkmodeText"></p></th>
+                                <th><p id="day7" class="day darkmodeText"></p></th>
+                            </tr>
+                            <tr>
+                                <th><img id="weatherImg6" style="width: 0.5cm;"></th>
+                                <th><img id="weatherImg7" style="width: 0.5cm;"></th>
+                            </tr>
+                            <tr>
+                                <th><p id="weatherDay6" class="weather darkmodeText"></p></th>
+                                <th><p id="weatherDay7" class="weather darkmodeText"></p></th>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <!--------------------------------------------------------------------------->
+                
+
+
+                <!--POST SCREEN-------------------------------------------------------------->
+                <div class="postScreen">
+
+                    <!--RECENT POSTS--------------------------------------------------------->
+                    <div class="recentPosts">
+                        <img id="addPostImg" src="resources/plus.png" onclick="newPost()" style="width: 0.5cm; margin-top: 3pt; cursor: pointer;">
+                        <div class="postItem">
+                            <p class="postItemText darkmodeText" style="font-weight: bold"><img class="user userdarkmode" src="resources/user.png"> Gabriel <span style="font-weight: lighter">posted</span></p>
+                            <img class="postedImg" src="resources/alameda.jpg" onclick="viewImg('resources/alameda.jpg')">
+                            <img class="sharePost" src="resources/share.png" style="width: 0.5cm; cursor: pointer" onclick="selectPerson(1, 'resources/alameda.jpg')">
+                            <br>
+                        </div>
+                        <div class="postItem">
+                            <p class="postItemText darkmodeText" style="font-weight: bold"><img class="user userdarkmode" src="resources/user.png"> André <span style="font-weight: lighter">posted</span></p>
+                            <video class="postedVideo" onclick="viewVideo('resources/avengers.mp4')">
+                                <source src="resources/avengers.mp4" type="video/mp4">
+                            </video>
+                            <img class="sharePost" src="resources/share.png" style="width: 0.5cm; cursor: pointer" onclick="selectPerson(0, 'resources/avengers.mp4')">
+                            <br>
+                        </div>
+                        <div class="postItem">
+                            <p class="postItemText darkmodeText" style="font-weight: bold"><img class="user userdarkmode" src="resources/user.png"> Andreia <span style="font-weight: lighter">posted</span></p>
+                            <img class="postedImg" src="resources/paris.png" onclick="viewImg('resources/paris.png')">
+                            <img class="sharePost" src="resources/share.png" style="width: 0.5cm; cursor: pointer" onclick="selectPerson(1, 'resources/paris.png')">
+                            <br>
+                        </div>
+                        <div class="postItem">
+                            <p class="postItemText darkmodeText" style="font-weight: bold"><img class="user userdarkmode" src="resources/user.png"> António <span style="font-weight: lighter">posted</span></p>
+                            <img class="postedImg" src="resources/Antwerpen.jpg" onclick="viewImg('resources/Antwerpen.jpg')">
+                            <img class="sharePost" src="resources/share.png" style="width: 0.5cm; cursor: pointer" onclick="selectPerson(1, 'resources/Antwerpen.jpg')">
+                            <br>
+                        </div>
+                        <div class="postItem">
+                            <p class="postItemText darkmodeText" style="font-weight: bold"><img class="user userdarkmode" src="resources/user.png"> Diogo <span style="font-weight: lighter">posted</span></p>
+                            <p class="postItemText darkmodeText" style="font-size: 7pt">Estou a adorar a minha viagem a Inglaterra!! Se podesse vinha cá sempre!</p>
+                            <img class="sharePost" src="resources/share.png" style="width: 0.5cm; cursor: pointer" onclick="selectPerson(3, 'Estou a adorar a minha viagem a Inglaterra!! Se podesse vinha cá sempre!')">
+                            <br>
+                        </div>
+                        <div class="postItem">
+                            <p class="postItemText darkmodeText" style="font-weight: bold"><img class="user userdarkmode" src="resources/user.png"> João <span style="font-weight: lighter">posted</span></p>
+                            <img class="postedImg" src="resources/ramen.jpg" onclick="viewImg('resources/ramen.jpg')">
+                            <img class="sharePost" src="resources/share.png" style="width: 0.5cm; cursor: pointer" onclick="selectPerson(1, 'resources/ramen.jpg')">
+                            <br>
+                        </div>
+                    </div>
+
+
+                    <!--IMAGE/VIDEO SELECTION------------------------------------------------------>
+                    <div class="selectPost">
+                        <table style="width: 100%">
+                            <tr>
+                                <th><img class="selectIMG" onclick="postConfirmation('resources/sharePhotos/alameda.jpg', 'photo')" src="resources/sharePhotos/alameda.jpg" style="margin-left: 3pt"></th>
+                                <th><img class="selectIMG" onclick="postConfirmation('resources/sharePhotos/antwerpen1.jpg', 'photo')" src="resources/sharePhotos/antwerpen1.jpg"></th>
+                            </tr>
+                            <tr>
+                                <th><img class="selectIMG" onclick="postConfirmation('resources/sharePhotos/paris.jpg', 'photo')" src="resources/sharePhotos/paris.jpg" style="margin-left: 3pt"></th>
+                                <th><img class="selectIMG" onclick="postConfirmation('resources/sharePhotos/belem.jpg', 'photo')" src="resources/sharePhotos/belem.jpg"></th>
+                            </tr>
+                            <tr>
+                                <th><img class="selectIMG" onclick="postConfirmation('resources/sharePhotos/marques_pombal.jpg', 'photo')" src="resources/sharePhotos/marques_pombal.jpg" style="margin-left: 3pt"></th>
+                                <th><img class="selectIMG" onclick="postConfirmation('resources/sharePhotos/antwerpen2.jpg', 'photo')" src="resources/sharePhotos/antwerpen2.jpg"></th>
+                            </tr>
+                            <tr>
+                                <th><video class="selectVideo" onclick="postConfirmation('resources/shareVideos/brussels.mp4', 'video')" src="resources/shareVideos/brussels.mp4"></th>
+                            </tr>
+                            <tr>
+                                <th><video class="selectVideo" onclick="postConfirmation('resources/shareVideos/paris.mp4', 'video')" src="resources/shareVideos/paris.mp4"></th>
+                            </tr>
+                            <tr>
+                                <th><video class="selectVideo" onclick="postConfirmation('resources/shareVideos/lisbon.mp4', 'video')" src="resources/shareVideos/lisbon.mp4"></th>
+                            </tr>
+                            <tr>
+                                <th><video class="selectVideo" onclick="postConfirmation('resources/shareVideos/spain.mp4', 'video')" src="resources/shareVideos/spain.mp4"></th>
+                            </tr>
+                        </table>
+                        <br>
+                    </div>
+
+                </div>
+                <!--------------------------------------------------------------------------->
+
+
+                <!--CHAT SCREEN-------------------------------------------------------------->
+                <div class="chatScreen">
+                    
+                    <!--RECENT CHATS--------------------------------------------------------->
+                    <div class="recentChat">
+                        <h4 class="darkmodeText" style="margin-left: -24pt">CHAT <img id="addChat" src="resources/plus.png" onclick=""></h4>
+                        <hr style="margin-top: -12%; margin-bottom: 0%">
+
+                        <button class="btn chatPerson" style="margin-top: 4pt; height: 27pt; cursor:pointer; text-align: left; overflow: hidden;" onclick="chat('Gabriel')">
+                            <h2 style="font-weight: bold"><img class="user" src="resources/gabriel_user.png" style="margin-top: -2pt"> Gabriel</h2>
+                            <p class="lastMessage Gabriel">Foi brutal!!!</p>
+                            <br>
+                        </button>
+                        <button class="btn chatPerson" style="margin-top: 4pt; height: 27pt; cursor:pointer; text-align: left; overflow: hidden;" onclick="chat('João')">
+                            <h2 style="font-weight: bold"><img class="user" src="resources/joao_user.png" style="margin-top: -2pt"> João</h2>
+                            <p class="lastMessage João">Queres ir ao cinema?</p>
+                            <br>
+                        </button>
+                        <button class="btn chatPerson" style="margin-top: 4pt; height: 27pt; cursor:pointer; text-align: left; overflow: hidden;" onclick="chat('Daniel')">
+                            <h2 style="font-weight: bold"><img class="user" src="resources/daniel_user.png" style="margin-top: -2pt"> Daniel</h2>
+                            <p class="lastMessage Daniel">Bora almoçar fora?</p>
+                            <br>
+                        </button>
+                    </div>
+
+
+                    <!--CHAT----------------------------------------------------------------->
+                    <div class="chat" style="padding-top: 3pt"></div>
+                    <div class="microphoneChat darkmodeBackground">
+                        <span>
+                            <img src="resources/anexo.png" onclick="chatAttachment()" style="width: 0.5cm; cursor: pointer; margin-left: -29pt;">
+                            <img src="resources/microphone_circle.png" onclick="openTextToSpeech('chat')" style="width: 0.5cm; cursor: pointer; margin-left: 6pt;">
+                            <img id="emoji" src="resources/emoji.png" onclick="openEmojis()" style="width: 0.5cm; cursor: pointer; margin-left: 6pt;">
+                        </span>
+                    </div>
+
+                </div>
+                <!--------------------------------------------------------------------------->
+
+
+                <!--SELECT EMOJI------------------------------------------------------------->
+                    <div class="selectEmoji">
+                        <table style="width: 100%">
+                            <tr>
+                                <th><img class="emoji" onclick="shareEmoji('resources/emojis/emoji1.png')" src="resources/emojis/emoji1.png" style="margin-left: 3pt"></th>
+                                <th><img class="emoji" onclick="shareEmoji('resources/emojis/emoji2.png')" src="resources/emojis/emoji2.png"></th>
+                            </tr>
+                            <tr>
+                                <th><img class="emoji" onclick="shareEmoji('resources/emojis/emoji3.png')" src="resources/emojis/emoji3.png" style="margin-left: 3pt"></th>
+                                <th><img class="emoji" onclick="shareEmoji('resources/emojis/emoji4.png')" src="resources/emojis/emoji4.png"></th>
+                            </tr>
+                            <tr>
+                                <th><img class="emoji" onclick="shareEmoji('resources/emojis/emoji5.png')" src="resources/emojis/emoji5.png" style="margin-left: 3pt"></th>
+                                <th><img class="emoji" onclick="shareEmoji('resources/emojis/emoji6.png')" src="resources/emojis/emoji6.png"></th>
+                            </tr>
+                            <tr>
+                                <th><img class="emoji" onclick="shareEmoji('resources/emojis/emoji7.png')" src="resources/emojis/emoji7.png" style="margin-left: 3pt"></th>
+                                <th><img class="emoji" onclick="shareEmoji('resources/emojis/emoji8.png')" src="resources/emojis/emoji8.png"></th>
+                            </tr>
+                            <tr>
+                                <th><img class="emoji" onclick="shareEmoji('resources/emojis/emoji9.png')" src="resources/emojis/emoji9.png" style="margin-left: 3pt"></th>
+                                <th><img class="emoji" onclick="shareEmoji('resources/emojis/emoji10.png')" src="resources/emojis/emoji10.png" style="margin-left: 3pt"></th>
+                            </tr>
+                            <tr>
+                                <th><img class="emoji" onclick="shareEmoji('resources/emojis/emoji11.png')" src="resources/emojis/emoji11.png" style="margin-left: 3pt"></th>
+                                <th><img class="emoji" onclick="shareEmoji('resources/emojis/emoji12.png')" src="resources/emojis/emoji12.png"></th>
+                            </tr>
+                            <tr>
+                                <th><img class="emoji" onclick="shareEmoji('resources/emojis/emoji13.png')" src="resources/emojis/emoji13.png" style="margin-left: 3pt"></th>
+                                <th><img class="emoji" onclick="shareEmoji('resources/emojis/emoji14.png')" src="resources/emojis/emoji14.png"></th>
+                            </tr>
+                            <tr>
+                                <th><img class="emoji" onclick="shareEmoji('resources/emojis/emoji15.png')" src="resources/emojis/emoji15.png" style="margin-left: 3pt"></th>
+                                <th><img class="emoji" onclick="shareEmoji('resources/emojis/emoji16.png')" src="resources/emojis/emoji16.png"></th>
+                            </tr>
+                            <tr>
+                                <th><img class="emoji" onclick="shareEmoji('resources/emojis/emoji17.png')" src="resources/emojis/emoji17.png" style="margin-left: 3pt"></th>
+                                <th><img class="emoji" onclick="shareEmoji('resources/emojis/emoji18.png')" src="resources/emojis/emoji18.png"></th>
+                            </tr>
+                        </table>
+                        <br>
+                    </div>
+                    <!--------------------------------------------------------------------------->
+            
+            </div>
+
+
+            <!--FILTER POPUP FOR NEWS SCREEN------------------------------------------------->
+            <div id="filterpopup" class="popup">
+                <div class="popupcontent darkmodeText darkmodeBackground">
+                    <span class="close">&times;</span>
+                    <b><p style="text-align: center; margin-top: -0.4cm; font-size: 8pt;">Categories</p></b>
+                    <p style="margin-top: -0.1cm;"><a class="popupCategory darkmodeText" onclick="showAll()" style="cursor: pointer;">All</a><img class="newsCheckmark" src="resources/check.png" id="allCheck"></p>
+                    <p><a class="popupCategory darkmodeText" onclick="showLocal()" style="cursor: pointer;">Local</a><img class="newsCheckmark" src="resources/check.png" id="localCheck"></p>
+                    <p><a class="popupCategory darkmodeText" onclick="showPolitics()" style="cursor: pointer;">Politics</a><img class="newsCheckmark" src="resources/check.png" id="politicsCheck"></p>
+                    <p><a class="popupCategory darkmodeText" onclick="showScience()" style="cursor: pointer;">Science</a><img class="newsCheckmark" src="resources/check.png" id="scienceCheck"></p>
+                    <p><a class="popupCategory darkmodeText" onclick="showSports()" style="cursor: pointer;">Sports</a><img class="newsCheckmark" src="resources/check.png" id="sportsCheck"></p>
+                </div>
+            </div>
+            <!------------------------------------------------------------------------------->
+        
+            
+            <!--SELECT NEW TYPE OF POST------------------------------------------------------>
+            <div class="newPost">
+                <table style="width: 100%">
+                    <tr>
+                        <th><img id="selectImg" src="resources/image.png" onclick="selectPost('photo')"></th>
+                        <th><img id="selectVideo" src="resources/video.png" onclick="selectPost('video')"></th>
+                    </tr>
+                    <tr>
+                        <th><p class="darkmodeText" style="margin-top: -10pt">Images</p></th>
+                        <th><p class="darkmodeText" style="margin-top: -10pt">Videos</p></th>
+                    </tr>
+                    <tr>
+                        <th><img id="selectLocation" src="resources/location.png" onclick="openShareLocation()"></th>
+                        <th><img id="selectMicrophone" src="resources/microphone.png" onclick="openTextToSpeech('post')"></th>
+                    </tr>
+                    <tr>
+                        <th><p class="darkmodeText" style="margin-top: -10pt">Location</p></th>
+                        <th><p id="voiceToTxt" class="darkmodeText" style="margin-top: -10pt">Voice to Text</p></th>
+                    </tr>
+                </table>
+            </div>
+            <!------------------------------------------------------------------------------>
+            
+            
+            <!--LOCATION SHARE-------------------------------------------------------------->
+            <div class="locationShare">
+                <img id="locationShareIMG" src="resources/tecnico_location.png">
+                <p class="darkmodeText">Share?</p>
+                <p><img class="confirmationButtonsLocation" onclick="backButton()" src="resources/cancel.png" style="margin-left: 2pt"><img class="confirmationButtonsLocation" onclick="post()" src="resources/confirm.png" style="margin-left: 33pt"></p>
+            </div>
+            <!------------------------------------------------------------------------------>
+
+
+            <!--TEXT TO SPEECH POST---------------------------------------------------------->
+            <div class="textToSpeech">
+                <b><span class="closeMic" onclick="backButton()">&times;</span></b>
+                <img id="microphoneGIF" src="resources/microphone_animation.gif">
+                <p class="darkmodeText">Listening...</p>
+                <button class="btn darkmodeText" type="button" onclick="openShowVoiceInput()" style="width: 40pt; background: #dc0101; border: #fe3f3f; font-weight: bold; cursor: pointer; position: absolute; margin-left: -20pt;">STOP</button>
+            </div>
+
+            <div class="showVoiceInput">
+                <p class="predictedText darkmodeText"></p>
+                <p><img class="confirmationButtons" onclick="backButton()" src="resources/cancel.png" style="margin-left: -36pt"><img class="confirmationButtons" onclick="voice()" src="resources/confirm.png" style="margin-left: 16pt"></p>
+            </div>
+            <!------------------------------------------------------------------------------>
+
+
+            <!--PERSON POPUP TO CHOOSE WHO TO SHARE------------------------------------------>
+            <div id="personPopupPost" class="popup">
+                <div class="popupcontent darkmodeText darkmodeBackground">
+                    <span class="close">&times;</span>
+                    <b><p style="text-align: center; margin-top: -0.4cm; font-size: 8pt;">People</p></b>
+                    <p><a class="darkmodeText" onclick="showPopupShare('Bernardo', 0)" style="cursor: pointer;">Bernardo</a></p>
+                    <p><a class="darkmodeText" onclick="showPopupShare('Daniel', 0)" style="cursor: pointer;">Daniel</a></p>
+                    <p><a class="darkmodeText" onclick="showPopupShare('Diogo', 0)" style="cursor: pointer;">Diogo</a></p>
+                    <p><a class="darkmodeText" onclick="showPopupShare('Gabriel', 0)" style="cursor: pointer;">Gabriel</a></p>
+                    <p><a class="darkmodeText" onclick="showPopupShare('João', 0)" style="cursor: pointer;">João</a></p>
+                </div>
+            </div>
+            <!------------------------------------------------------------------------------->
+
+
+            <!--VIEW POST------------------------------------------------------------------->
+            <div id="viewPost">
+                <img id="viewImgLarge">
+                <video id="viewVideoLarge" onclick="this.paused?this.play():this.pause()">
+            </div>
+            <!------------------------------------------------------------------------------>
+
+
+            <!--POPUP CONFIRMATION---------------------------------------------------------->
+            <div id="confirmationPopup">
+                <div id="confirmationPopupContent">
+                    <p>Share?</p>
+                    <p><img onclick="backButton()" src="resources/cancel.png" style="margin-left: -2pt"><img onclick="post()" src="resources/confirm.png" style="margin-left: 17pt"></p>
+                </div>
+            </div>
+            <!------------------------------------------------------------------------------>
+
+
+            <!--POPUP CONFIRMATION---------------------------------------------------------->
+            <div id="confirmationPopupShare">
+                <div id="confirmationPopupContent">
+                    <p>Share?</p>
+                    <p><img onclick="cancelShare()" src="resources/cancel.png" style="margin-left: -2pt"><img onclick="confirmShare()" src="resources/confirm.png" style="margin-left: 17pt"></p>
+                </div>
+            </div>
+            <!------------------------------------------------------------------------------>
+
+
+            <!--PERSON POPUP TO CHOOSE WHO TO TEXT------------------------------------------>
+            <div id="personPopup" class="popup">
+                <div class="popupcontent darkmodeText darkmodeBackground">
+                    <span class="close">&times;</span>
+                    <b><p style="text-align: center; margin-top: -0.4cm; font-size: 8pt;">People</p></b>
+                    <p><a class="darkmodeText" onclick="addPerson('Bernardo')" style="cursor: pointer;">Bernardo</a></p>
+                    <p><a class="darkmodeText" onclick="addPerson('Daniel')" style="cursor: pointer;">Daniel</a></p>
+                    <p><a class="darkmodeText" onclick="addPerson('Diogo')" style="cursor: pointer;">Diogo</a></p>
+                    <p><a class="darkmodeText" onclick="addPerson('Gabriel')" style="cursor: pointer;">Gabriel</a></p>
+                    <p><a class="darkmodeText" onclick="addPerson('João')" style="cursor: pointer;">João</a></p>
+                </div>
+            </div>
+            <!------------------------------------------------------------------------------->
+
+
+            <!--CHAT NOTIFICATION------------------------------------------------------------>
+            <div class="notification" onclick="openNotification()">
+                <p style="margin-top: 12pt">New Message</p>
+                <img id="notificationIMG" style="width: 1.1cm; margin-top: -10pt;">
+                <p id="notificationTXT" style="margin-top: 0pt">
+            </div>
+            <!------------------------------------------------------------------------------->
+
+
+            <!--SETIINGS-------------------------------------------------------------------->
+            <div class="settings" style="margin-left: 6%; margin-top: 20%">
+                <button class="btn" onclick="nightmode()">Nightmode <img src="resources/night_mode_off.png" id="nightmodeIcon" style="width: 0.33cm; vertical-align: -1.5pt; margin-left: 4px"></button> 
+                <button class="btn" onclick="openHelp()">Help</button>                
+            </div>
+            <!------------------------------------------------------------------------------>
+        
+
+            <!--SETIINGS-------------------------------------------------------------------->
+            <div class="help" style="margin-left: 6%; margin-top: 20%">
+                <img id="backButtonHelp" src="resources/back_black.png" style="width: 1cm; float: left;">
+                <p class="darkmodeText" style="font-size: 7pt; margin-top: 4pt;">Goes back in any screen or situation.</p>    
+                <img id="menuButtonHelp" src="resources/menu_black.png" style="width: 0.8cm; float: left;">
+                <p class="darkmodeText" style="font-size: 7pt; margin-top: 11pt; margin-left: 29pt;">Opens the menu.</p>   
+            </div>
+            <!------------------------------------------------------------------------------>
+
+        </div>
+
+        <!--IGO SIDE BUTTONS----------------------------------------------------------------->
+        <div class="buttondiv">
+            <button class="button button1" onclick="menuButton()"><img src="resources/menu.png" style="width: 0.21cm; display: block; margin-left: -0.085cm;"></button>
+            <button class="button button2" onclick="backButton()"><img src="resources/back.png" style="width: 0.21cm; display: block; margin-left: -0.1cm;"></button>
+        </div>
+        <!----------------------------------------------------------------------------------->
+        
+
+        <!--MENU----------------------------------------------------------------------------->
+        <div id="menu" class="sidebar">
+            <div class="row">
+                <div class="column">
+                    </a><img src="resources/msg.png" onclick="openChat()" style="margin-left: 0.13cm; width: 1.058cm; padding: 0pt; cursor: pointer;">
+                    <p style="margin-top: 0px; margin-left: 0.25cm;">CHAT</p>
+                </div>
+                <div class="column">
+                    <img src="resources/news.png" onclick="openNews()" style="margin-left: 0.23cm; width: 1.058cm; cursor: pointer; padding: 0pt;">
+                    <p style="margin-top: 0px; margin-left: 0.39cm;">NEWS</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="column" style="margin-top : 0pt">
+                    <img src="resources/post.png" onclick="openPosts()" style="margin-left: 0.13cm; width: 1.058cm; padding: 0pt; cursor: pointer;">
+                    <p style="margin-top: 0px; margin-left: 0.31cm;">POST</p>
+                </div>
+                <div class="column" style="margin-top : 0px">
+                    <img src="resources/settings.png" onclick="openSettings()" style="margin-left: 0.23cm; width: 1.058cm; padding: 0pt; cursor: pointer;">
+                    <p style="margin-top: 0px; margin-left: 0.10cm;">SETTINGS</p>
+                </div>
+            </div>
+        </div>
+        <!----------------------------------------------------------------------------------->
+    </div>
+
+<script src="js/clock.js"></script>
+<script src="js/sidebar.js"></script>
+<script src="js/buttons.js"></script>
+<script src="js/TouchScroll.js"></script>
+<script src="js/popup.js"></script>
+<script src="js/news.js"></script>
+<script src="js/posts.js"></script>
+<script src="js/nightmode.js"></script>
+<script src="js/chat.js"></script>
+<script src="js/SpeechToText.js"></script>
+<script>
+document.body.draggable = false;
+
+var currentpage = "home";
+var lastpage;
+var lastpage2;
+var msgOrPost;
+
+function openHelp() {
+    document.getElementsByClassName("settings")[0].style.display = "none";
+    document.getElementsByClassName("help")[0].style.display = "block";
+    currentpage = "help";
+}
+
+</script>
+
+</body>
+</html>

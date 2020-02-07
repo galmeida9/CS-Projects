@@ -1,0 +1,37 @@
+.topbar {
+    height: 11.25pt;
+    overflow: hidden;
+    background-color: black;
+    position: fixed;
+    width: 3cm;
+    z-index: 4;
+
+}
+
+.topbar p{
+    float: left;
+    text-align: center;
+    text-decoration: none;
+    font-size: 7.5pt;
+    margin-top: 0pt;
+    padding: 3pt 3.75pt;
+    color: white;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
+    -webkit-user-drag: none;
+}
+
+.battery {
+    margin-left: 21pt;
+}
+
+.topbar img {
+    width: 11.25pt; 
+    margin-top: 1.125pt; 
+    margin-left: -4.5pt;
+    content:url("../resources/battery.png");
+}

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>IPM</title>
+<!--<link rel="stylesheet" href="style.css">-->
+<link rel="stylesheet" href="style.css">
+
+<style type="text/css">
+
+</style>
+
+
+<script type="text/javascript">
+  function toggleVisible(id) {    
+  }
+
+</script>
+</head>
+
+
+<body style="font-family:calibri; text-align: center;">
+
+<h1 style="color: rgb(0, 134, 191); font-family: OCR A Std, monospace;">Interfaces Pessoa M&aacute;quina 2018-19</h1>
+<h2>Grupo 41A - Turno IPM20111326L08</h2>
+
+
+<table align=center>
+  <tr>
+    <td width="33%">Gabriel Almeida</td>
+    <td width="33%">Diogo Ravasco</td> 
+    <td width="33%">Roman Babynyuk</td>
+    </tr>
+    <tr>
+    <td>ist189446</td>
+    <td>ist189434</td> 
+    <td>ist189536</td>
+  </tr>
+  <tr>
+    <td><img id="rgb" onclick="changeImage('rgb', 'resources/gabriel.png', 'resources/student_3.png')" src = "resources/student_3.png" width="96"></td>
+    <td><img id="cmy" onclick="changeImage('cmy', 'resources/diogo.png', 'resources/student_2.png')" src = "resources/student_2.png" width="100"></td> 
+    <td><img id="hsv" onclick="changeImage('hsv', 'resources/roman.png', 'resources/student_3.png')" src = "resources/student_3.png" width="96"></td>
+  </tr>
+</table>
+
+<script>
+function changeImage(id, image, standardImg) {
+    var img = document.getElementById(id);
+    if (img.src.indexOf(image) != -1)    
+        img.src = standardImg;
+    else
+        img.src = image;
+}
+</script>
+
+<div id="links" style="text-align: left; padding-left: 100px;">
+<p>
+
+<div id="at" class="section">
+<h2 class="section">Análise de Tarefas</h2>
+<div id="at_inner" class="inner_section">
+<a href="resources/questionario_AUT.pdf">Question&aacute;rio para an&aacute;lise de tarefas</a> <br />
+<a href="resources/questionario_AUT_melhorado.pdf">Question&aacute;rio para an&aacute;lise de tarefas (melhorado)</a> <br />
+<a href="resources/relatorio_AUT.pdf">An&aacute;lise de tarefas + Funcionalidades</a> <br />
+<a href="resources/relatorio_AUT_melhorado.pdf">An&aacute;lise de tarefas + Funcionalidades (melhorados)</a> <br />
+</div>
+</div>
+
+<div id="mc" class="section">
+<h2 class="section">Modelo Conceptual</h2>
+<div id="mc_inner" class="inner_section">
+<a href="resources/modelo_conceptual.zip">Modelo Conceptual</a> <br />
+<a href="mod-conceptual2.html">Modelo Conceptual (melhorado)</a> <br />
+</div>
+</div>
+
+<div id="proto" class="section">
+<h2 class="section">Protótipos</h2>
+<div id="proto_inner" class="inner_section">
+<a href="pbf1.html">PBF</a> <br />
+<a href="pbf2.html">PBF (melhorado)</a> <br />
+<a href="https://web.tecnico.ulisboa.pt/~ist189446/IPM/prototipo1/">Primeiro prot&oacute;tipo funcional</a> <br />
+<a href="https://web.tecnico.ulisboa.pt/~ist189446/IPM/prototipo1/">Primeiro prot&oacute;tipo funcional completo</a> <br />
+<a href="https://web.tecnico.ulisboa.pt/~ist189446/IPM/prototipo2/">Segundo prot&oacute;tipo funcional</a> <br />
+<a href="https://web.tecnico.ulisboa.pt/~ist189446/IPM/prototipo2/">Segundo prot&oacute;tipo funcional completo</a><br />
+<a href="https://web.tecnico.ulisboa.pt/~ist189446/IPM/prototipo3/">Prot&oacute;tipo Final</a> <br />
+<a href="https://web.tecnico.ulisboa.pt/~ist189446/IPM/prototipo3/">Prot&oacute;tipo Final completo</a><br />
+</div>
+</div>
+
+<div id="au" class="section">
+<h2 class="section">Avaliação com Utilizadores</h2>
+<div id="au_inner" class="inner_section">
+<a href="tarefas-criterios1.html">Tarefas e Crit&eacute;rios de usabilidade</a> <br />
+<a href="tarefas-criterios2.html">Tarefas e Crit&eacute;rios de usabilidade (melhorado)</a> <br />
+<a href="relatorioTestes1.html">Relat&oacute;rio da avalia&ccedil;&atilde;o com utilizadores</a> <br />
+<a href="relatorioTestes2.html">Relat&oacute;rio da avalia&ccedil;&atilde;o com utilizadores (melhorado)</a> <br />
+<a href="manual.html">Manual do Utilizador</a> <br />
+</p>
+</div>
+</div>
+
+</div>
+<script>
+
+</script>
+
+
+</body>
+</html>

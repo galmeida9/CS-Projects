@@ -1,0 +1,71 @@
+.newsscreeen {
+    display: none;
+}
+
+.news {
+    display: block;
+    margin-top: 0.4cm;
+    height: 102pt;
+    position: absolute;
+    border-bottom-left-radius: 12.75pt;
+    border-bottom-right-radius: 12.75pt;
+}
+
+.news, .frame, .newsStory, .weatherScreen{
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
+    -webkit-user-drag: none;
+}
+
+.news p {
+    font-size: 8pt;  
+}
+
+.news a{
+    text-decoration: none; 
+    color: black;
+}
+
+.news hr{
+    width: 82.5pt; 
+    border: 0; 
+    height: 0.75pt; 
+    background: rgb(161, 161, 161);
+}
+
+.newsStory {
+    display: none;
+    margin-top: 0pt;
+    height: 102pt;
+    position: absolute;
+    border-bottom-left-radius: 12.75pt;
+    border-bottom-right-radius: 12.75pt;
+}
+
+.newsStory p {
+    font-size: 7pt;
+}
+
+.weatherScreen {
+    display: none;
+    margin-top: 0pt;
+    height: 102pt;
+    width: 2.988cm;
+    position: absolute;
+    border-bottom-left-radius: 12.75pt;
+    border-bottom-right-radius: 12.75pt;
+}
+
+.weather {
+    font-size: 7pt;
+    margin-top: -4%;
+}
+
+.day {
+    font-size: 7pt;
+}
+
