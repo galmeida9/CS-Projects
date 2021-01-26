@@ -1,0 +1,4 @@
+public int og() {
+	 write "X Y Z \n"; 
+	 return 0; 
+}

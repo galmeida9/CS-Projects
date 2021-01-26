@@ -1,0 +1,3 @@
+auto f() { return 2,"string",3; }
+real g() { return input; }
+public int og() { write g(); return 0;}
