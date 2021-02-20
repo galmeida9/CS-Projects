@@ -21,3 +21,8 @@ Projects from Computer Science course
 * [Graphical Interfaces](https://github.com/galmeida9/LEIC-A-Projects/tree/master/Graphical_Interfaces)
 * [Artificial Intelligence](https://github.com/galmeida9/LEIC-A-Projects/tree/master/Artificial_Intelligence)
 * [Networks](https://github.com/galmeida9/LEIC-A-Projects/tree/master/Networks)
+
+## 2. MSc
+
+### 2.1 1st year
+* [Software Architecture](https://github.com/galmeida9/Software-Architecture-20-21)
