@@ -16,7 +16,7 @@ Projects from Computer Science course
 ### 1.3 3rd year
 * [Compilers](https://github.com/galmeida9/LEIC-A-Projects/tree/master/Compilers)
 * [Software Engineering](https://github.com/galmeida9/Software-Engineering-19-20)
-* [Distributed Systems](https://github.com/tecnico-distsys/A09-Sauron)
+* [Distributed Systems](https://github.com/galmeida9/Distributed-Systems-19-20)
 * [Databases](https://github.com/galmeida9/LEIC-A-Projects/tree/master/Databases)
 * [Graphical Interfaces](https://github.com/galmeida9/LEIC-A-Projects/tree/master/Graphical_Interfaces)
 * [Artificial Intelligence](https://github.com/galmeida9/LEIC-A-Projects/tree/master/Artificial_Intelligence)
