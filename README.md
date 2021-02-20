@@ -20,7 +20,7 @@ Projects from Computer Science course
 * [Databases](https://github.com/galmeida9/LEIC-A-Projects/tree/master/Databases)
 * [Graphical Interfaces](https://github.com/galmeida9/LEIC-A-Projects/tree/master/Graphical_Interfaces)
 * [Artificial Intelligence](https://github.com/galmeida9/LEIC-A-Projects/tree/master/Artificial_Intelligence)
-* [Networks](https://github.com/galmeida9/LEIC-A-Projects/tree/master/Networks)
+* [Computer Networks](https://github.com/galmeida9/Computer-Network_Projects)
 
 ## 2. MSc
 
